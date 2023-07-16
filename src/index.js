@@ -23,6 +23,8 @@ function onSearch(event) {
   }
 }
 
+loadMore.style.visibility = 'hidden';
+
 async function getImage(query) {
   try {
     const response = await axios.get('https://pixabay.com/api/', {
@@ -50,6 +52,7 @@ async function getImage(query) {
         "We're sorry, but you've reached the end of search results."
       );
     } else {
+      loadMore.style.visibility = 'visible';
       Notiflix.Notify.info(
         `Hooray! We found ${response.data.totalHits} images.`
       );
