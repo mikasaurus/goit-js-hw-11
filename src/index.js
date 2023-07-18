@@ -26,7 +26,7 @@ function onSearch(event) {
 
 loadMore.style.visibility = 'hidden';
 
-async function getImage(query) {
+async function getImage(query, page) {
   try {
     const response = await axios.get('https://pixabay.com/api/', {
       params: {
@@ -36,6 +36,7 @@ async function getImage(query) {
         orientation: 'horizontal',
         safesearch: true,
         per_page: 40,
+        page: page,
       },
     });
 
